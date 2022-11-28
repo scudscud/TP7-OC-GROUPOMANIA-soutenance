@@ -104,6 +104,7 @@ export default {
     SignIn,
     // indexVue,
     // modify: () => import(/* webpackPrefetch: true */"./index/modifytest.vue"),
+  // index: () => import(/* webpackPrefetch: true */"../pages/index.vue"),
     //  Post
   },
   name: "DefaultLayout",
@@ -220,6 +221,7 @@ export default {
         if(res === null){
           console.log(res);
           this.show = true
+          // getRefresh()
         }else{
         this.userjwtid = res.data
         this.show = false

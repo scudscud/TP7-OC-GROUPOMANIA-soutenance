@@ -1244,7 +1244,7 @@ p.firstpost {
     translate: 3px;
     border: solid 1px $secondary;
 
-    &.btn-att-follow.img-att:before {
+    &.btn-att-follow>.img-att:before {
       color: $secondary;
     }
   }

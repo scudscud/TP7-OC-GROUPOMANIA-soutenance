@@ -67,7 +67,7 @@
                 />
                 <v-spacer />
                 <div class="errormsg">{{ infomsg }}</div>
-                <div v-if="!successreg" class="successmsg">{{ successreg }}</div>
+                <div v-if="successreg" class="successmsg">{{ successreg }}</div>
                 <button
                   class="btn-valid"
                   @click="verifyUser"
@@ -144,8 +144,8 @@ export default {
           this.show = false;
           setTimeout(() => {
             this.$emit("close-modale", true);
-              //  window.location.reload()  
-          }, 1000);
+               window.location.reload()  
+          }, 1500);
           this.userid = userId;
         })
         .catch((error) => {
