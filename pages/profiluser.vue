@@ -4,13 +4,13 @@
       <h1 class="card-profil-title-h1">Mon profil</h1>
     </v-card-text>
 
-    <v-card-text v-if="url == '' && urlpic == ''" class="card-profil-name">
+    <v-card-text v-if="url == '' &&  urlpic == '' || url == undefined || urlpic == undefined" class="card-profil-name">
       <div class="block-picture">
         <label class="lab-pic" for="avatar">
           <div id="avatar-empty-profil">{{ avatarpicempty }}</div>
           <v-icon class="lab-pic-custom" size="25px">mdi-camera-plus</v-icon>
           <input id="avatar" class="form-avatar-profil" type="file" value="" name="avatar"
-            placeholder="votre photo/avatar" @change="picPreview" />
+            placeholder="votre photo/avatar" @click="picPreview" />
         </label>
       </div>
       <span class="fullname">{{ fullname }}</span>
@@ -19,13 +19,12 @@
       <div class="block-picture">
         <label class="lab-pic" for="avatar">
           <img id="form-picture-profil" :src="urlpic" alt="photo de l'utilisateur" />
-
           <v-icon class="lab-pic-custom" size="25px">mdi-camera-plus</v-icon>
-          <button id="btn-del-pic-profil-bis" @click="picPreview">
+          <!-- <button id="btn-del-pic-profil-bis" @click="picPreview">
             <v-icon id="btn-del-pic-profil-icon" size="25px">mdi-camera-off</v-icon>
-          </button>
+          </button> -->
           <input id="avatar" class="form-avatar-profil" type="file" value="" name="avatar"
-            placeholder="votre photo/avatar" @click="delPic" />
+            placeholder="votre photo/avatar" @click="picPreview" />
         </label>
       </div>
       <span class="fullname">{{ fullname }}</span>
@@ -37,7 +36,7 @@
           <v-icon class="lab-pic-custom-url" size="25px">mdi-camera-plus</v-icon>
           <img class="form-avatar-dl" :src="url" alt="photo de l'utilisateur"/>
           <input id="avatar" class="form-avatar-profil-url" type="file" value="" name="avatar"
-            placeholder="votre photo/avatar" @change="picPreview" />
+            placeholder="votre photo/avatar" @click="picPreview" />
         </label>
         <div class="block-btn-pic-profil">
           <button id="btn-del-pic-profil" @click="delPicPreview">
@@ -364,15 +363,17 @@ export default {
     },
 
          
-    delPic(e){
+    delPic(){
       this.url = ""
-      // this.urlpic === ""
+      // this.urlpic = ""
     },
 
     picPreview(e) {
-      console.log(e);
+      // console.log(this.urlpic);
       e.target.value[0].split(" ");
+   
       const pic = e.target.files[0];
+      // console.log(this.url);
       this.photo = pic;
       this.url = URL.createObjectURL(pic);
       this.validPost = !this.validPost;
@@ -380,6 +381,7 @@ export default {
 
     getcolor() {
       if (this.urlpic === "" || this.urlpic === undefined) {
+        
         this.avatarpicempty = this.lastname.split("")[0].toLocaleUpperCase();
         // let randomColor = Math.floor(Math.random() * 16777215).toString(16);
         // document.getElementById("avatar-empty-profil").style.backgroundColor =
@@ -503,6 +505,11 @@ export default {
               this.follower = docs.data.followers;
               this.following = docs.data.following;
               // console.log(this.follower);
+             
+
+
+      
+      
             })
             .catch((error) => {
               console.log(error);
@@ -606,6 +613,7 @@ export default {
   },
 
   async mounted() {
+   
     axios.defaults.withCredentials = true;
     // console.log($refs.deletepost.$el)
 
@@ -637,6 +645,8 @@ export default {
         this.following = docs.data.following;
         // console.log(this.follower);
         // console.log(this.urlpic);
+        this.avatarpicempty = this.lastname.split("")[0].toLocaleUpperCase()
+        
       })
       .catch((error) => {
         console.log(error);
@@ -654,6 +664,7 @@ export default {
               this.followInfo = [docs.data, { "name": name }]
               this.info.push(this.followInfo)
               console.log(this.info);
+              // this.getcolor;
             });
         });
       }).catch((error) => {
@@ -705,9 +716,10 @@ export default {
     //       }
     //     });
     //   }).catch((err) => { err })
-
-    this.getcolor();
+    this.getcolors
+ 
   },
+
 };
 </script>
 

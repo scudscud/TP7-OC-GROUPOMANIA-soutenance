@@ -4,7 +4,7 @@
         <h1 class="card-profil-title-h1">Profil Admin</h1>
       </v-card-text>
   
-      <v-card-text v-if="url == '' && urlpic == ''" class="card-profil-name">
+      <v-card-text v-if="url == '' &&  urlpic == '' || url == undefined || urlpic == undefined"  class="card-profil-name">
         <div class="block-picture">
           <label class="lab-pic" for="avatar">
             <div id="avatar-empty-profil">{{ avatarpicempty }}</div>
