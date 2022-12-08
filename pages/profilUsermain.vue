@@ -17,8 +17,6 @@
       <div class="block-picture">
         <label class="lab-pic" for="avatar">
           <img id="form-picture-profil" :src="urlpic" alt="phtot de l'utilisateur" />
-
-
         </label>
       </div>
       <span class="fullname-profilusermain">{{ fullname }}</span>
