@@ -2,6 +2,7 @@
   <v-card class="card">
     <v-card-text class="card-profil-title">
       <h1 class="card-profil-title-h1">Son profil </h1>
+
     </v-card-text>
 
     <v-card-text v-if="url == '' &&  urlpic == '' || url == undefined || urlpic == undefined"  class="card-profiluser">
@@ -22,15 +23,12 @@
       <span class="fullname-profilusermain">{{ fullname }}</span>
     </v-card-text>
 
-
-
     <v-card-text class="card-profil-biographie">
       <h2>biographie </h2>
       <p v-if="this.bioUser == ''" class="card-profil-biographie-p">{{ biographieP }}</p>
       <p v-else class="card-profilusermain-biographie-p">{{ bioUser }}</p>
 
     </v-card-text>
-
 
     <v-card-text v-if="following[0] != undefined" class="card-profil-friend">
       <div class="card-profil-friend-t">

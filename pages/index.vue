@@ -59,7 +59,7 @@
               <div class="btn-book-main">
                 <!-- <modify :keyPost="post._id" v-show="showmodify" @close-modale-modify="showmodify = false" /> -->
                 <button id="btn-post-modify" type="submit" @click=" showmodify = !showmodify,postIdDel(post._id)">
-                  <v-icon class="pen-icon-main" size="15px">mdi-lead-pencil</v-icon> Bannir
+                  <v-icon class="pen-icon-main" size="15px">mdi-lead-pencil</v-icon> Modifier
                 </button>
                 <!-- <deletepost ref="post_id"  :tets="post._id,index"  v-show="showdel" @close-modale-delete="showdel = false" /> -->
                 <button id="btn-post-delete" @click="showdel =!showdel,postIdDel(post._id)">
@@ -387,9 +387,9 @@ export default {
               this.posts = docs.data
             })
             localStorage.removeItem('sort')
-            this.emptylike = true
+            this.emptyownpost = true
             setTimeout(() => {
-              this.emptylike = false
+              this.emptyownpost = false
             }, 5000);
           }else{
           localStorage.setItem('sort', 'Own');
